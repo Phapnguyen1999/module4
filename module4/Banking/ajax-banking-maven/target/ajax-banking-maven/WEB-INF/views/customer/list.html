@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>List</title>
+    <th:block th:replace="/layout/head :: head"/>
+</head>
+
+<body>
+<div class="container">
+    <div class="table-title">
+        <div class="row">
+            <div class="col-sm-5">
+                <h1>List of customers</h1>
+            </div>
+            <div class="col-sm-7">
+                <a class="btn btn-outline-light create-modal" data-bs-toggle="modal"
+                   data-bs-target="#modalCreateCustomer"><i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                    <span>Add
+                            New Customer</span></a>
+                <a class="btn btn-outline-light"><i class="fa fa-history" aria-hidden="true"></i>
+                    <span>Transfer money Information</span></a>
+            </div>
+        </div>
+    </div>
+    <table class="table table-hover" id="tbListCustomers">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>FullName</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Balance</th>
+            <th colspan="5">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal create -->
+<th:block th:replace="/customer/modal_create :: modal_create" />
+
+<!-- Modal Deposit -->
+<th:block th:replace="/customer/modal_deposit :: modal_deposit" />
+
+<!-- Modal Edit -->
+<th:block th:replace="/customer/modal_withdraw :: modal_withdraw" />
+
+<!-- Modal Withdraw -->
+<th:block th:replace="/customer/modal_edit :: modal_edit" />
+
+<!-- Modal Transfer -->
+<th:block th:replace="/customer/modal_transfer :: modal_transfer" />
