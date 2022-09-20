@@ -1,113 +1,46 @@
-class App {
-
-    static SweetAlert = class {
-        static showSuccessAlert(t) {
-            Swal.fire({
-                icon: 'success',
-                title: t,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 1500
-            })
-        }
-
-        static showErrorAlert(t) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Warning',
-                text: t,
-            })
-        }
-    }
-
-    static IziToast = class  {
-        static showErrorAlert(m) {
-            iziToast.error({
-                title: 'Error',
-                message: m,
-            });
-        }
-    }
-
-    static formatNumber() {
-        $(".num-space").number(true, 0, ',', ' ');
-        $(".num-point").number(true, 0, ',', '.');
-        $(".num-comma").number(true, 0, ',', ',');
-    }
-
-    static formatNumberSpace(x) {
-        if (x == null) {
-            return x;
-        }
-        return x.toString().replace(/ /g, "").replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-    }
-}
-
-class LocationRegion {
-    constructor(id, provinceId, provinceName, districtId, districtName, wardId, wardName, address) {
-        this.id = id;
-        this.provinceId = provinceId;
-        this.provinceName = provinceName;
-        this.districtId = districtId;
-        this.districtName = districtName;
-        this.wardId = wardId;
-        this.wardName = wardName;
-        this.address = address;
-    }
-}
-
 class Customer {
-    constructor(id, fullName, email, phone, locationRegion, balance) {
+    constructor(id, fullName, email, phone, address, balance, deleted) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.phone = phone;
-        this.locationRegion = locationRegion;
+        this.address = address;
         this.balance = balance;
-    }
-}
-
-class Sender extends Customer {
-    constructor(id, fullName, email, phone, locationRegion, balance) {
-        super();
-    }
-}
-
-class Recipient extends Customer {
-    constructor(id, fullName, email, phone, locationRegion, balance) {
-        super();
+        this.deleted = deleted;
     }
 }
 
 class Deposit {
-    constructor(id, customerId, transactionAmount) {
+    constructor(id, customer, transactionAmount, deleted = 0) {
+        this.id = id;
+        this.customer = customer;
+        this.transactionAmount = transactionAmount;
+        this.deleted = deleted;
+    }
+}
+
+class Withdraw {
+    constructor(id, customerId, transactionAmount, deleted = 0) {
         this.id = id;
         this.customerId = customerId;
         this.transactionAmount = transactionAmount;
+        this.deleted = deleted;
     }
 }
 
 class Transfer {
-    constructor(id, senderId, recipientId, transferAmount) {
-        this.id = id;
-        this.senderId = senderId;
-        this.recipientId = recipientId;
-        this.transferAmount = transferAmount;
-    }
-}
-
-class TransferHistory {
-    constructor(id, senderId, senderName, recipientId, recipientName, createdOn, createdAt, transferAmount, fees, feesAmount, transactionAmount) {
+    constructor(id, senderId, senderName, senderBalance, recipientId, recipientName, recipientBalance, transferAmount, feesAmount, fees, totalTransfer, deleted = 0) {
         this.id = id;
         this.senderId = senderId;
         this.senderName = senderName;
+        this.senderBalance = senderBalance;
         this.recipientId = recipientId;
         this.recipientName = recipientName;
-        this.createdOn = createdOn;
-        this.createdAt = createdAt;
+        this.recipientBalance = recipientBalance;
         this.transferAmount = transferAmount;
-        this.fees = fees;
         this.feesAmount = feesAmount;
-        this.transactionAmount = transactionAmount;
+        this.fees = fees;
+        this.totalTransfer = totalTransfer;
+        this.deleted = deleted;
     }
 }
