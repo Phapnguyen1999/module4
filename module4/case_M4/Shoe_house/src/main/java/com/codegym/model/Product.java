@@ -1,4 +1,2 @@
-package com.codegym.model;
-
-public class Product {
+package com.codegym.model;public class Product {
 }
