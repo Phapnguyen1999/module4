@@ -1,0 +1,792 @@
+﻿<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>GREEN HOUSE</title>
+    <th:block th:replace="/layout/head :: head"></th:block>
+</head>
+
+<body>
+<!-- Begin page -->
+<div id="layout-wrapper">
+
+    <header id="page-topbar">
+        <div class="navbar-header">
+            <div class="d-flex">
+                <!-- LOGO -->
+                <div class="navbar-brand-box">
+                    <a href="index.html" class="logo logo-dark">
+                            <span class="logo-sm">
+                                <img src="/assets/images/logo.svg" alt="" height="22">
+                            </span>
+                        <span class="logo-lg mt-4">
+                                <img src="/assets/images/logo-dark.png" alt="" height="17">
+                            </span>
+                    </a>
+
+                    <a href="" class="logo logo-light">
+                            <span class="logo-sm">
+                                <img src="/assets/images/logo-light.svg" alt="" height="22">
+                            </span>
+                        <span class="logo-lg">
+                                <img style="margin-top: inherit" src="/assets/images/logo-light.png" alt="" height="19">
+                            </span>
+                    </a>
+                </div>
+
+                <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect"
+                        id="vertical-menu-btn">
+                    <i class="fa fa-fw fa-bars"></i>
+                </button>
+
+                <!-- App Search-->
+                <form class="app-search d-none d-lg-block">
+                    <div class="row">
+                    <div class="position-relative">
+                        <input id="searchProduct" type="text" class="form-control" placeholder="Search...">
+                        <span class="bx bx-search-alt"></span>
+                    </div>
+                    <input type="button" id="btnSearchProduct" class="ml-3 btn btn-success" value="search" style="border-radius: 20px">
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="d-flex">
+
+                <div class="dropdown d-inline-block d-lg-none ml-2">
+                    <button type="button" class="btn header-item noti-icon waves-effect"
+                            id="page-header-search-dropdown" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                        <i class="mdi mdi-magnify"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0"
+                         aria-labelledby="page-header-search-dropdown">
+
+                        <form class="p-3">
+                            <div class="form-group m-0">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search ..."
+                                           aria-label="Recipient's username">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit"><i
+                                                class="mdi mdi-magnify"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="dropdown d-inline-block">
+                    <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="rounded-circle header-profile-user" src="/assets/images/users/avatar-1.jpg"
+                             alt="Header Avatar">
+                        <span class="d-none d-xl-inline-block ml-1">Henry</span>
+                        <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <!-- item-->
+                        <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle mr-1"></i>
+                            Profile</a>
+                        <a class="dropdown-item" href="#"><i
+                                class="bx bx-wallet font-size-16 align-middle mr-1"></i> My Wallet</a>
+                        <a class="dropdown-item d-block" href="#"><span
+                                class="badge badge-success float-right">11</span><i
+                                class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings</a>
+                        <a class="dropdown-item" href="#"><i
+                                class="bx bx-lock-open font-size-16 align-middle mr-1"></i> Lock screen</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-danger" href="#"><i
+                                class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </header> <!-- ========== Left Sidebar Start ========== -->
+    <div class="vertical-menu">
+
+        <div data-simplebar="" class="h-100">
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu">
+                <!-- Left Menu Start -->
+                <ul class="metismenu list-unstyled" id="side-menu">
+                    <li class="menu-title">Menu</li>
+
+                    <li>
+                        <a href="/users" class="waves-effect">
+                            <i class="bx bx-home-circle"></i><span
+                                class="badge badge-pill badge-info float-right"></span>
+                            <span>List Users</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-layout"></i>
+                            <span>Layouts</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="layouts-horizontal.html">Horizontal</a></li>
+                            <li><a href="layouts-light-sidebar.html">Light Sidebar</a></li>
+                            <li><a href="layouts-compact-sidebar.html">Compact Sidebar</a></li>
+                            <li><a href="layouts-icon-sidebar.html">Icon Sidebar</a></li>
+                            <li><a href="layouts-boxed.html">Boxed Width</a></li>
+                            <li><a href="layouts-preloader.html">Preloader</a></li>
+                            <li><a href="layouts-colored-sidebar.html">Colored Sidebar</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-title">Apps</li>
+
+                    <li>
+                        <a href="calendar.html" class=" waves-effect">
+                            <i class="bx bx-calendar"></i>
+                            <span>Calendar</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="chat.html" class=" waves-effect">
+                            <i class="bx bx-chat"></i>
+                            <span class="badge badge-pill badge-success float-right">New</span>
+                            <span>Chat</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-store"></i>
+                            <span>Ecommerce</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="ecommerce-products.html">Products</a></li>
+                            <li><a href="ecommerce-product-detail.html">Product Detail</a></li>
+                            <li><a href="ecommerce-orders.html">Orders</a></li>
+                            <li><a href="ecommerce-customers.html">Customers</a></li>
+                            <li><a href="ecommerce-cart.html">Cart</a></li>
+                            <li><a href="ecommerce-checkout.html">Checkout</a></li>
+                            <li><a href="ecommerce-shops.html">Shops</a></li>
+                            <li><a href="ecommerce-add-product.html">Add Product</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-bitcoin"></i>
+                            <span>Crypto</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="crypto-wallet.html">Wallet</a></li>
+                            <li><a href="crypto-buy-sell.html">Buy/Sell</a></li>
+                            <li><a href="crypto-exchange.html">Exchange</a></li>
+                            <li><a href="crypto-lending.html">Lending</a></li>
+                            <li><a href="crypto-orders.html">Orders</a></li>
+                            <li><a href="crypto-kyc-application.html">KYC Application</a></li>
+                            <li><a href="crypto-ico-landing.html">ICO Landing</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-envelope"></i>
+                            <span>Email</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="email-inbox.html">Inbox</a></li>
+                            <li><a href="email-read.html">Read Email</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-receipt"></i>
+                            <span>Invoices</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="invoices-list.html">Invoice List</a></li>
+                            <li><a href="invoices-detail.html">Invoice Detail</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-briefcase-alt-2"></i>
+                            <span>Projects</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="projects-grid.html">Projects Grid</a></li>
+                            <li><a href="projects-list.html">Projects List</a></li>
+                            <li><a href="projects-overview.html">Project Overview</a></li>
+                            <li><a href="projects-create.html">Create New</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-task"></i>
+                            <span>Tasks</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="tasks-list.html">Task List</a></li>
+                            <li><a href="tasks-kanban.html">Kanban Board</a></li>
+                            <li><a href="tasks-create.html">Create Task</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bxs-user-detail"></i>
+                            <span>Contacts</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="contacts-grid.html">User Grid</a></li>
+                            <li><a href="contacts-list.html">User List</a></li>
+                            <li><a href="contacts-profile.html">Profile</a></li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </div>
+            <!-- Sidebar -->
+        </div>
+    </div>
+    <!-- Left Sidebar End -->
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+
+        <div class="page-content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-9">
+                                    <div>
+                                        <h4 class="card-title mb-4">List Products</h4>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div>
+                                        <button class="btn btn-outline-primary create">
+                                            <i class="fa fa-plus"></i> Add new Product
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="tbProduct" class="table table-centered table-nowrap mb-0">
+                                    <thead class="thead-light">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Product Name</th>
+                                        <th>Image</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Category</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- end table-responsive -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <script>document.write(new Date().getFullYear())</script>
+                    © Skote.
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-sm-right d-none d-sm-block">
+                        Design & Develop by Themesbrand
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<!-- end main content-->
+
+</div>
+<!-- END layout-wrapper -->
+
+<!-- JAVASCRIPT -->
+<th:block th:replace="/layout/script:: script"></th:block>
+
+<th:block th:replace="/product/modalCreate :: modalCreate"></th:block>
+
+<th:block th:replace="/product/modalUpdate :: modalUpdate"></th:block>
+<script>
+    let product = new Product();
+    let category = new Category();
+
+    function renderProduct(product) {
+        let str = `
+                                <tr id="tr_${product.id}">
+                                    <td>${product.id}</td>
+                                    <td>${product.name}</td>
+                                    <td>
+                                       <img src="${product.image}" width="120px" height="auto"/>
+                                    </td>
+                                    <td>${product.quantity}</td>
+                                    <td>${new Intl.NumberFormat('vi-VN', {
+            style: 'currency',
+            currency: 'VND'
+        }).format(product.price)}
+                                    </td>
+                                    <td>${product.category.name}</td>
+                                    <td>
+                                <button type="button" class="btn btn-outline-primary update" data-id="${product.id}"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button type="button" class="btn btn-outline-danger block" data-id="${product.id}"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </td>
+                                </tr>
+                                `;
+        return str;
+    }
+
+    function loadProducts() {
+        $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: "http://localhost:8080/api/products"
+        })
+            .done((data) => {
+                let tbProduct = $("#tbProduct tbody");
+                console.log(data);
+                data.forEach(item => {
+                    product = item;
+                    let str = renderProduct(product);
+                    tbProduct.prepend(str);
+                });
+                handleBtn();
+                showCategory();
+            });
+    };
+
+    $(".create").on("click", () => {
+        showCategory()
+        $("#modalCreateProduct").modal("show");
+    });
+
+    function handleShowFormEdit() {
+        $(".update").on("click", function () {
+            let id = $(this).data("id");
+            $('#modalUpdateProduct').modal('show');
+            findProductById(id).then((result) => {
+                $("#nameUp").val(result.name);
+                $("#imageUp").val(result.image);
+                $("#quantityUp").val(result.quantity);
+                $("#priceUp").val(result.price);
+                $("#categoryUp").val(result.category.id);
+            });
+        });
+    }
+
+    function handleDelete() {
+        $(".block").on("click", function () {
+            let id = $(this).data("id");
+            findProductById(id).then(function () {
+                App.SweetAlert.showSuspendConfirmDialog()
+                    .then((result) => {
+                        if (result.isConfirmed)
+                            doBlock();
+                    });
+            })
+        })
+    }
+
+    $("#btnCreate").on("click", function () {
+        $('#modalCreateProduct .modal-alert-danger').removeClass('show').addClass('hide');
+        $("#modalCreateProduct .modal-alert-danger").empty();
+        $('#frmCreate').submit();
+    })
+
+    $('#btnUpdate').on('click', function () {
+        $('#modalUpdateProduct .modal-alert-danger').removeClass('show').addClass('hide');
+        $("#modalUpdateProduct .modal-alert-danger").empty();
+        $('#frmUpdate').submit();
+    })
+
+    $('#frmCreate').validate({
+        rules: {
+            name: {
+                required: true,
+                minlength: 3,
+                maxlength: 50
+            },
+            image: {
+                required: true,
+                // maxlength: 255
+            },
+            quantity: {
+                required: true,
+                min: 1,
+                max: 1000000
+            },
+            price: {
+                required: true,
+                min: 0,
+                max: 1000000000
+            }
+        },
+        messages: {
+            name: {
+                required: "Vui lòng nhập tên sản phẩm",
+                minlength: "Tên sản phẩm tên tối thiểu 5 ký tự",
+                maxlength: "Tên sản phẩm tối đa 50 ký tự"
+            },
+            image: {
+                required: "Vui lòng nhập đường đẫn ảnh",
+            },
+            quantity: {
+                required: "Vui lòng nhập số lượng",
+                min: "Số lượng tối thiểu 1 ",
+                max: "Số lượng tối đa 1000000 "
+            },
+            price: {
+                required: "Vui lòng nhập giá",
+                min: "Giá sản phẩm tối thiểu 0đ!",
+                max: "Giá sản phẩm tối đa 1000000000đ!"
+            }
+        },
+        errorLabelContainer: "#modalCreateProduct .modal-alert-danger",
+        errorPlacement: function (error, element) {
+            error.appendTo("#modalCreateProduct .modal-alert-danger");
+        },
+        showErrors: function (errorMap, errorList) {
+            if (this.numberOfInvalids() > 0) {
+                $("#modalCreateProduct .modal-alert-danger").removeClass("hide").addClass("show");
+            } else {
+                $("#modalCreateProduct .modal-alert-danger").removeClass("show").addClass("hide").empty();
+                $("#frmCreate input.error").removeClass("error");
+            }
+            this.defaultShowErrors();
+        },
+        submitHandler: function () {
+            doCreate();
+        }
+    });
+
+    $('#frmUpdate').validate({
+        rules: {
+            name: {
+                required: true,
+                minlength: 3,
+                maxlength: 50
+            },
+            image: {
+                required: true,
+                // maxlength: 255
+            },
+            quantity: {
+                required: true,
+                min: 1,
+                max: 1000000
+            },
+            price: {
+                required: true,
+                min: 0,
+                max: 1000000000
+            }
+        },
+        messages: {
+            name: {
+                required: "Vui lòng nhập lại tên sản phẩm",
+                minlength: "Tên sản phẩm tên tối thiểu 5 ký tự",
+                maxlength: "Tên sản phẩm tối đa 50 ký tự"
+            },
+            image: {
+                required: "Vui lòng nhập lại đường đẫn ảnh",
+            },
+            quantity: {
+                required: "Vui lòng nhập lại số lượng",
+                min: "Số lượng tối thiểu 1 ",
+                max: "Số lượng tối đa 1000000 "
+            },
+            price: {
+                required: "Vui lòng nhập giá",
+                min: "Giá sản phẩm tối thiểu 0đ!",
+                max: "Giá sản phẩm tối đa 1000000000đ!"
+            }
+        },
+        errorLabelContainer: "#modalUpdateProduct .modal-alert-danger",
+        errorPlacement: function (error, element) {
+            error.appendTo("#modalUpdateProduct .modal-alert-danger");
+        },
+        showErrors: function (errorMap, errorList) {
+            if (this.numberOfInvalids() > 0) {
+                $("#modalUpdateProduct .modal-alert-danger").removeClass("hide").addClass("show");
+            } else {
+                $("#modalUpdateProduct .modal-alert-danger").removeClass("show").addClass("hide").empty();
+                $("#frmUpdate input.error").removeClass("error");
+            }
+            this.defaultShowErrors();
+        },
+        submitHandler: function () {
+            doUpdate();
+        }
+    });
+
+    function doCreate() {
+        category.id = $("#category").val();
+        category.name = $("#category option:selected").text();
+
+        delete product.id;
+        product.name = $('#name').val();
+        product.image = $('#image').val();
+        product.quantity = $('#quantity').val();
+        product.price = $('#price').val();
+        product.category = category;
+        product.isDeleted = +0;
+
+        $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "POST",
+            url: "http://localhost:8080/api/products/create",
+            data: JSON.stringify(product)
+        })
+            .done((data) => {
+                console.log(data);
+                product = data;
+                let str = renderProduct(product);
+
+                $("#tbProduct tbody").prepend(str);
+                handleBtn();
+                $("#modalCreateProduct").modal("hide");
+                App.SweetAlert.showSuccessAlert("Create product success!");
+            })
+            .fail((jqXHR) => {
+                let str = ``;
+                if (jqXHR.status === 401) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_401);
+                    setTimeout(() => {
+                        location.href = "/logout";
+                    }, 3000)
+
+                } else if (jqXHR.status === 403) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_403);
+
+                } else if (jqXHR.status === 500) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_500);
+                } else if (jqXHR.responseJSON) {
+                    $.each(jqXHR.responseJSON, function (key, value) {
+                        str += `<label id="${key}Up-error" class="error" for="${key}Up">${value}</label>`;
+                        $("#" + key).addClass("error");
+                    });
+                    $("#modalCreateProduct .modal-alert-danger").empty().removeClass("hide").addClass("show").append(str);
+                }
+            })
+        // $("#frmEdit")[0].reset();
+    }
+
+    function doUpdate() {
+
+        category.id = $("#categoryUp").val();
+        category.name = $("#categoryUp option:selected").text();
+        console.log(category);
+
+        product.name = $('#nameUp').val();
+        product.image = $('#imageUp').val();
+        product.quantity = $('#quantityUp').val();
+        product.price = $('#priceUp').val();
+        product.category = category;
+        console.log(product);
+
+        $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "PUT",
+            url: "http://localhost:8080/api/products/edit/" + product.id,
+            data: JSON.stringify(product)
+        })
+            .done((data) => {
+                product = data;
+                let str = renderProduct(product)
+                let currentRow = $('#tr_' + product.id);
+                currentRow.replaceWith(str);
+                handleBtn();
+                $("#modalUpdateProduct").modal("hide");
+                App.SweetAlert.showSuccessAlert("Update product success!");
+            })
+            .fail((jqXHR) => {
+                let str = ``;
+                if (jqXHR.status === 401) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_401);
+                    setTimeout(() => {
+                        location.href = "/logout";
+                    }, 3000)
+                } else if (jqXHR.status === 403) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_403);
+
+                } else if (jqXHR.status === 500) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_500);
+                } else if (jqXHR.responseJSON) {
+                    $.each(jqXHR.responseJSON, function (key, value) {
+                        str += `<label id="${key}Up-error" class="error" for="${key}Up">${value}</label>`;
+                        $("#" + key).addClass("error");
+                    });
+                    $("#modalUpdateProduct .modal-alert-danger").empty().removeClass("hide").addClass("show").append(str);
+                }
+            })
+        // $("#frmEdit")[0].reset();
+    }
+
+    function doBlock() {
+        $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "DELETE",
+            url: "http://localhost:8080/api/products/block/" + product.id,
+            data: JSON.stringify(product)
+        })
+            .done((item) => {
+                console.log(item);
+                let currentRow = $('#tr_' + item);
+                currentRow.replaceWith("");
+                handleBtn();
+                // $("#mdEdit").modal("hide");
+                App.SweetAlert.showSuccessAlert("Deleted product success!");
+            })
+            .fail((jqXHR) => {
+                if (jqXHR.status === 401) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_401);
+                    setTimeout(() => {
+                        location.href = "/logout";
+                    }, 3000)
+                } else if (jqXHR.status === 403) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_403);
+
+                } else if (jqXHR.status === 500) {
+                    App.SweetAlert.showErrorAlert(App.ERROR_500);
+                }
+            })
+        // $("#frmEdit")[0].reset();
+    }
+
+    $("#modalCreateProduct").on("hidden.bs.modal", function () {
+        $("#modalCreateProduct .modal-alert-danger").empty();
+        $("#frmCreate")[0].reset();
+        $('#modalCreateProduct .modal-alert-danger').removeClass('show').addClass('hide');
+    });
+
+    $("#modalUpdateProduct").on("hidden.bs.modal", function () {
+        $("#modalUpdateProduct .modal-alert-danger").empty();
+        $("#modalUpdateProduct .modal-alert-danger").removeClass("show").addClass("hide");
+        $("#frmUpdate input.error").removeClass("error");
+        $("#frmUpdate")[0].reset();
+        $("#frmUpdate").validate().resetForm();
+    });
+
+
+    function handleBtn() {
+        handleShowFormEdit();
+        handleDelete();
+    }
+
+    function findProductById(id) {
+        return $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "GET",
+            url: "http://localhost:8080/api/products/" + id
+        })
+            .done((data) => {
+                product = data;
+            })
+            .fail((err) => {
+                alert("Id not found");
+            })
+    }
+
+    function showCategory() {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/categories"
+        }).done((data) => {
+            console.log(data);
+            $("#category").empty();
+            $("#categoryUp").empty();
+
+            $.each(data, (i, item) => {
+                let str = `<option value="${item.id}" >${item.name}</option>`;
+                $("#category").append(str);
+                $("#categoryUp").append(str);
+            })
+        })
+            .fail((err) => {
+                alert("Load category fail!");
+            })
+    }
+
+    function doSearchProduct() {
+        $('#btnSearchProduct').on('click', function () {
+            let query = $('#searchProduct').val();
+            $('#tbProduct tbody').html("")
+            if (query === "") {
+                loadProducts();
+                return
+            }
+            $.ajax({
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                "type": "GET",
+                "url": "http://localhost:8080/api/products/search/" + query
+            })
+                .done((data) => {
+                    $('#tbProduct tbody').html("")
+                    $.each(data, (i, item) => {
+                        product = item;
+                        let str = renderProduct(product)
+                        $('#tbProduct tbody').prepend(str);
+                    })
+                })
+        })
+    }
+
+    doSearchProduct();
+    loadProducts();
+</script>
+
+</body>
+
+</html>

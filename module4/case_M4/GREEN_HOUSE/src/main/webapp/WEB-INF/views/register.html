@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <th:block th:replace="/layout/head::head"></th:block>
+    <title>Register</title>
+</head>
+
+
+<body>
+<div id="modalSignUp" class="account-pages my-5 pt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center mb-4 mt-3">
+                            <a href="">
+                                <span style="font-weight: bold; font-size: 30px; color: green">GREEN HOUSE</span>
+                            </a>
+                        </div>
+                        <div class="modal-alert-danger hide">
+                        </div>
+                        <form id="frmRegister" action="mt-3" class="p-2">
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input class="form-control" type="text" id="fullName" name="fullName"
+                                       placeholder="Full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="username">User name (email)</label>
+                                <input class="form-control" type="email" id="username" name="username"
+                                       placeholder="User name">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input class="form-control" type="password" id="password" name="password"
+                                       placeholder="Enter your password">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input class="form-control" type="tel" id="phone" name="phone"
+                                       placeholder="Phone">
+                            </div>
+                            <div class="mb-3 text-center">
+                                <button class="btn btn-success btn-block" type="button" id="btn_signUp"> Sign Up Free
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- end card-body -->
+                </div>
+                <!-- end card -->
+
+                <div class="row mt-4">
+                    <div class="col-sm-12 text-center">
+                        <p class="text-muted mb-0">Already have an account? <a href="login" class="text-dark ml-1"><b>Sign
+                            In</b></a></p>
+                    </div>
+                </div>
+
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</div>
+<!-- end page -->
+
+<th:block th:replace="/layout/script::script"></th:block>
+<script>
+    // let btnSignUp = $('#btn_signUp')
+    //     btnSignUp.on('click', () => {
+    //         let fullName = $('#fullName').val();
+    //         let username = $('#username').val();
+    //         let password = $('#password').val();
+    //         let phone = $('#phone').val();
+    // // let roleId = $('#role').val();
+    // // let roleCode = $("#role :selected").text()
+    //
+    //         let user = {
+    //             fullName: fullName,
+    //             username: username,
+    //             password: password,
+    //             phone:phone,
+    //             role: 2
+    //         }
+    //
+    //         $.ajax({
+    //             "headers": {
+    //                 "accept": "application/json",
+    //                 "content-type": "application/json"
+    //             },
+    //             "type": "POST",
+    //             "url": "http://localhost:8080/api/auth/register",
+    //             "data": JSON.stringify(user)
+    //         })
+    //             .done((data) => {
+    //                 console.log(data)
+    //                 $('#username').val($('#username').val());
+    //                 $('#password').val($('#password').val());
+    //                 App.SweetAlert.showSuccessAlert('Đăng kí thành công');
+    //             })
+    //             .fail((jqXHR) => {
+    //                 console.log(jqXHR);
+    //                 if (jqXHR.responseJSON) {
+    //                     $.each(jqXHR.responseJSON, (key, item) => {
+    //                         App.SweetAlert.showErrorAlert(item);
+    //                         App.SweetAlert.showSuccessAlert('Đăng kí thất bại');
+    //                     })
+    //                 }
+    //
+    //             })
+    //     })
+    let user = new User();
+    let role = new Role();
+
+    $("#btn_signUp").on("click", function () {
+        $('#modalSignUp .modal-alert-danger').removeClass('show').addClass('hide');
+        $("#modalSignUp .modal-alert-danger").empty();
+        $('#frmRegister').submit();
+    })
+
+    $('#frmRegister').validate({
+        rules: {
+            username: {
+                required: true,
+            },
+            fullName: {
+                required: true,
+            },
+            password: {
+                required: true,
+            },
+            phone: {
+                required: true,
+            }
+        },
+        messages: {
+            username: {
+                required: "Vui lòng nhập tên đăng nhập",
+            },
+            fullName: {
+                required: "Vui lòng nhập tên đầy đủ"
+            },
+            password: {
+                required: "Vui lòng nhập mật khẩu"
+            },
+            phone: {
+                required: "Vui lòng nhập số điện thoại"
+            }
+        },
+        errorLabelContainer: "#modalSignUp .modal-alert-danger",
+        errorPlacement: function (error, element) {
+
+            error.appendTo("#modalSignUp .modal-alert-danger");
+        },
+        showErrors: function (errorMap, errorList) {
+            if (this.numberOfInvalids() > 0) {
+                $("#modalSignUp .modal-alert-danger").removeClass("hide").addClass("show");
+            } else {
+                $("#modalSignUp .modal-alert-danger").removeClass("show").addClass("hide").empty();
+                $("#frmRegister input.error").removeClass("error");
+            }
+            this.defaultShowErrors();
+        },
+        submitHandler: function () {
+            doCreate();
+        }
+    });
+
+    function doCreate() {
+        let fullName = $('#fullName').val();
+        let phone = $('#phone').val();
+        let username = $('#username').val();
+        let password = $('#password').val();
+        let roleId = 2;
+
+        let user = {
+            fullName: fullName,
+            phone: phone,
+            username: username,
+            password: password,
+            role: {
+                id: roleId
+            },
+        }
+
+        $.ajax({
+            "headers": {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            "type": "POST",
+            "url": "http://localhost:8080/api/auth/register",
+            "data": JSON.stringify(user)
+        })
+            .done((data) => {
+                console.log(data)
+                App.SweetAlert.showSuccessAlert('Đăng kí thành công');
+                window.location.href = "login";
+            })
+            .fail((jqXHR) => {
+                console.log(jqXHR);
+                if (jqXHR.responseJSON) {
+                    $.each(jqXHR.responseJSON, (key, item) => {
+                        App.SweetAlert.showErrorAlert(item);
+                        App.SweetAlert.showErrorAlert('Đăng kí thất bại');
+                    })
+                }
+
+            })
+    }
+
+</script>
+</body>
+
+</html>
