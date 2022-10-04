@@ -385,8 +385,6 @@
             });
     };
 
-
-
     function findProductById(id) {
         return $.ajax({
             headers: {
@@ -403,6 +401,7 @@
                 alert("Id not found");
             })
     }
+
     function showCategory() {
         $.ajax({
             type: "GET",
@@ -449,6 +448,33 @@
                 })
         })
     }
+
+    function showProductByCategory(){
+        $(".categoriesItem").on("click", function () {
+            let id = $(this).data("id");
+            $.ajax({
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                "type": "GET",
+                "url": "http://localhost:8080/api/categories/" + id
+            })
+                .done((data) => {
+                    let tbProduct = $("#tbProduct tbody");
+                    tbProduct.empty();
+                    console.log(data);
+                    data.forEach(item => {
+                        product = item;
+                        let str = renderProduct(product);
+                        tbProduct.prepend(str);
+                    });
+                    handleBtn();
+                    showCategory();
+                })
+        });
+    }
+    showProductByCategory()
     doSearchProduct();
     loadProducts();
 </script>

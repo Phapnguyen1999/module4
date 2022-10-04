@@ -62,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic().authenticationEntryPoint(restServicesEntryPoint());
 
         http.authorizeRequests()
-                .antMatchers("/", "/api/auth/login", "/api/auth/register", "/login").permitAll()
+                .antMatchers("/", "/api/auth/login", "/api/auth/register", "/login","/register").permitAll()
 //                .antMatchers( "/api/products/block/{id}",
 //                                            "/api/products/edit/{id}",
 //                                            "/api/products/**",
@@ -73,11 +73,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                                            "/api/users/delete/{id}",
 //                                            "/api/users/update/active",
 //                                            "/api/users/update/block").hasAnyAuthority("ADMIN")
-                .antMatchers( "/users",
-                        "/products",
-                        "/home").hasAnyAuthority("ADMIN")
+                .antMatchers( "/users", "/products","/home").hasAnyAuthority("ADMIN")
                 .antMatchers("/home").hasAnyAuthority("USER")
-                .antMatchers("/assets/**","/home","/api/products").permitAll()
+                .antMatchers("/assets/**","/home","/api/products","/api/users/{id}","/api/auth/login").permitAll()
                 .antMatchers(
                         "/v2/api-docs",
                         "/swagger-resources/configuration/ui",

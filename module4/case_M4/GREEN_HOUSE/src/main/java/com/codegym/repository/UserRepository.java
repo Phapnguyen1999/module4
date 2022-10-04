@@ -1,9 +1,9 @@
 package com.codegym.repository;
 
 import com.codegym.model.User;
-import com.codegym.model.dto.ProductDTO;
 import com.codegym.model.dto.UserDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -43,6 +43,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
             "FROM User  u WHERE  " +
             " u.fullName like %?1% OR u.username like %?1% "  )
     List<UserDTO> findUserByValue(String query);
+    @Modifying
+    @Query("UPDATE User AS u SET u.deleted = true WHERE u.id = :id")
+    void blockUserById(@Param("id") Long id);
 
 
 }

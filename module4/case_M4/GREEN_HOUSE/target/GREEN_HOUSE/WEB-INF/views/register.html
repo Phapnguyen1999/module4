@@ -69,49 +69,6 @@
 
 <th:block th:replace="/layout/script::script"></th:block>
 <script>
-    // let btnSignUp = $('#btn_signUp')
-    //     btnSignUp.on('click', () => {
-    //         let fullName = $('#fullName').val();
-    //         let username = $('#username').val();
-    //         let password = $('#password').val();
-    //         let phone = $('#phone').val();
-    // // let roleId = $('#role').val();
-    // // let roleCode = $("#role :selected").text()
-    //
-    //         let user = {
-    //             fullName: fullName,
-    //             username: username,
-    //             password: password,
-    //             phone:phone,
-    //             role: 2
-    //         }
-    //
-    //         $.ajax({
-    //             "headers": {
-    //                 "accept": "application/json",
-    //                 "content-type": "application/json"
-    //             },
-    //             "type": "POST",
-    //             "url": "http://localhost:8080/api/auth/register",
-    //             "data": JSON.stringify(user)
-    //         })
-    //             .done((data) => {
-    //                 console.log(data)
-    //                 $('#username').val($('#username').val());
-    //                 $('#password').val($('#password').val());
-    //                 App.SweetAlert.showSuccessAlert('Đăng kí thành công');
-    //             })
-    //             .fail((jqXHR) => {
-    //                 console.log(jqXHR);
-    //                 if (jqXHR.responseJSON) {
-    //                     $.each(jqXHR.responseJSON, (key, item) => {
-    //                         App.SweetAlert.showErrorAlert(item);
-    //                         App.SweetAlert.showSuccessAlert('Đăng kí thất bại');
-    //                     })
-    //                 }
-    //
-    //             })
-    //     })
     let user = new User();
     let role = new Role();
 
@@ -138,7 +95,7 @@
         },
         messages: {
             username: {
-                required: "Vui lòng nhập tên đăng nhập",
+                required: "Vui lòng nhập tên người dùng",
             },
             fullName: {
                 required: "Vui lòng nhập tên đầy đủ"
@@ -152,7 +109,6 @@
         },
         errorLabelContainer: "#modalSignUp .modal-alert-danger",
         errorPlacement: function (error, element) {
-
             error.appendTo("#modalSignUp .modal-alert-danger");
         },
         showErrors: function (errorMap, errorList) {
@@ -208,11 +164,9 @@
                         App.SweetAlert.showErrorAlert('Đăng kí thất bại');
                     })
                 }
-
             })
     }
 
 </script>
 </body>
-
 </html>

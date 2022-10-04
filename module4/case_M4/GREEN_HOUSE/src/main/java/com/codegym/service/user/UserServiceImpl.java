@@ -94,6 +94,11 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public void blockUserById(Long id) {
+        userRepository.blockUserById(id);
+    }
+
+    @Override
     public Optional<UserDTO> findByUserId(Long id) {
         return userRepository.findUserById(id);
     }

@@ -17,6 +17,7 @@ public interface IUserService extends IGeneralService<User>, UserDetailsService 
     List<UserDTO> findAllUserDTOByDeletedIsFailse();
     List<UserDTO> findUserDTOByRoleIdAndDeletedIsFalse(Long id);
     List<UserDTO> findUserByValue(String query);
+    void blockUserById(Long id);
 
     List<UserDTO> findAllByIdNot(Long id);
 

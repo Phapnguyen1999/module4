@@ -44,7 +44,7 @@
                             <input id="searchUser" type="text" class="form-control" placeholder="Search...">
                             <span class="bx bx-search-alt"></span>
                         </div>
-                        <input type="button" id="btnSearchUser" class="ml-3 btn btn-success" value="search" style="border-radius: 20px">
+                        <input type="button" id="btnSearchUser" class="ml-3 btn btn-success" value="Search" style="border-radius: 20px">
                     </div>
                 </form>
 
@@ -267,13 +267,7 @@
                                         <h4 class="card-title mb-4">List User</h4>
                                     </div>
                                 </div>
-                                <div class="col-3">
-                                    <div>
-                                        <button class="btn btn-outline-primary create">
-                                            <i class="fa fa-plus"></i> Add new User
-                                        </button>
-                                    </div>
-                                </div>
+
                             </div>
                             <div class="table-responsive">
                                 <table id="tbUser" class="table table-centered table-nowrap mb-0">
@@ -378,23 +372,15 @@
             });
     };
 
-    $(".create").on("click", () => {
-        $("#modalCreateUser").modal("show");
-    });
-
     function handleShowFormEdit() {
         $(".update").on("click", function () {
             let id = $(this).data("id");
             $('#modalUpdateUser').modal('show');
-            console.log("1")
             findUserById(id).then((result) => {
-                console.log("2")
-                console.log(result)
                 $("#usernameUp").val(result.username);
                 $("#fullNameUp").val(result.fullName);
                 $("#phoneUp").val(result.phone);
                 $("#roleUp").val(result.role.id);
-                console.log("3")
             });
         });
     }
@@ -402,7 +388,7 @@
     function handleBlockUser() {
         $(".block").on("click", function () {
             let id = $(this).data("id");
-            findProductById(id).then(function () {
+            findUserById(id).then(function () {
                 App.SweetAlert.showSuspendConfirmDialog()
                     .then((result) => {
                         if (result.isConfirmed)
@@ -419,14 +405,11 @@
         $('#frmUpdate').submit();
     })
 
-
     $('#frmUpdate').validate({
         submitHandler: function () {
             doUpdate();
         }
     });
-
-
 
     function doUpdate() {
         role.id = $("#roleUp").val();

@@ -44,7 +44,7 @@
                         <input id="searchProduct" type="text" class="form-control" placeholder="Search...">
                         <span class="bx bx-search-alt"></span>
                     </div>
-                    <input type="button" id="btnSearchProduct" class="ml-3 btn btn-success" value="search" style="border-radius: 20px">
+                    <input type="button" id="btnSearchProduct" class="ml-3 btn btn-success" value="Search" style="border-radius: 20px">
                     </div>
                 </form>
 
@@ -495,41 +495,41 @@
 
     $('#frmUpdate').validate({
         rules: {
-            name: {
+            nameUp: {
                 required: true,
                 minlength: 3,
                 maxlength: 50
             },
-            image: {
+            imageUp: {
                 required: true,
                 // maxlength: 255
             },
-            quantity: {
+            quantityUp: {
                 required: true,
                 min: 1,
                 max: 1000000
             },
-            price: {
+            priceUp: {
                 required: true,
                 min: 0,
                 max: 1000000000
             }
         },
         messages: {
-            name: {
-                required: "Vui lòng nhập lại tên sản phẩm",
+            nameUp: {
+                required: "Vui lòng nhập tên sản phẩm",
                 minlength: "Tên sản phẩm tên tối thiểu 5 ký tự",
                 maxlength: "Tên sản phẩm tối đa 50 ký tự"
             },
-            image: {
-                required: "Vui lòng nhập lại đường đẫn ảnh",
+            imageUp: {
+                required: "Vui lòng nhập đường đẫn ảnh",
             },
-            quantity: {
-                required: "Vui lòng nhập lại số lượng",
+            quantityUp: {
+                required: "Vui lòng nhập số lượng",
                 min: "Số lượng tối thiểu 1 ",
                 max: "Số lượng tối đa 1000000 "
             },
-            price: {
+            priceUp: {
                 required: "Vui lòng nhập giá",
                 min: "Giá sản phẩm tối thiểu 0đ!",
                 max: "Giá sản phẩm tối đa 1000000000đ!"
@@ -704,9 +704,10 @@
 
     $("#modalUpdateProduct").on("hidden.bs.modal", function () {
         $("#modalUpdateProduct .modal-alert-danger").empty();
-        $("#modalUpdateProduct .modal-alert-danger").removeClass("show").addClass("hide");
+        $("#modalUpdateProduct .modal-alert-danger").removeClass('show').addClass('hide');
         $("#frmUpdate input.error").removeClass("error");
         $("#frmUpdate")[0].reset();
+
         $("#frmUpdate").validate().resetForm();
     });
 

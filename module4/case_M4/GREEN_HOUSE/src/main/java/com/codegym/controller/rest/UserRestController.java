@@ -1,12 +1,8 @@
 package com.codegym.controller.rest;
 
-import com.codegym.model.Customer;
-import com.codegym.model.Product;
 import com.codegym.model.User;
 import com.codegym.model.dto.ProductDTO;
 import com.codegym.model.dto.UserDTO;
-import com.codegym.service.customer.ICustomerService;
-import com.codegym.service.product.IProductService;
 import com.codegym.service.user.IUserService;
 import com.codegym.utils.AppUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +12,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -103,29 +98,21 @@ public class UserRestController {
         return new ResponseEntity<>(userDTOS, HttpStatus.OK);
     }
 
-//    @PutMapping("/block/{id}")
-//    public ResponseEntity<?> doBlock(@PathVariable Long id, BindingResult bindingResult) {
-//        Optional<User> user = userService.findById(id);
-//
-//        if (!user.isPresent()) {
-//            return new ResponseEntity<>("Không tìm thấy user có id là:" + id + "!", HttpStatus.NO_CONTENT);
-//        }
-//
-//        if (bindingResult.hasErrors()) {
-//            return AppUtils.errors(bindingResult);
-//        }
-//
-//        try {
-////            if (user.get().get().getId() == 1) {
-////                userService.blockCustomer(id);
-////            } else {
-////                customerService.unlockCustomer(id);
-////            }
-////
-////
-////            return new ResponseEntity<>(id, HttpStatus.OK);
-//        } catch (Exception e) {
-//            return new ResponseEntity<>("Server không xử lý được", HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
+    @DeleteMapping("/block/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    public ResponseEntity<?> doBlock(@PathVariable Long id, @Validated @RequestBody UserDTO userDTO, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return appUtils.mapErrorToResponse(bindingResult);
+        }
+        Optional<UserDTO> user = userService.findUserById(id);
+        User newUser = user.get().toUser();
+        newUser.setDeleted(true);
+        try {
+            userService.save(newUser);
+            return new ResponseEntity<>(id, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Server không xử lý được", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
