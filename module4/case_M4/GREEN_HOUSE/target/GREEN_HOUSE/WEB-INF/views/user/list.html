@@ -18,30 +18,33 @@
                                 <img src="/assets/images/logo.svg" alt="" height="22">
                             </span>
                         <span class="logo-lg mt-4">
-                                <img src="/assets/images/logo-dark.png" alt="" height="17">
+                                <img src="/assets/images/greenhouse.png" alt="" height="120">
                             </span>
                     </a>
 
-                    <a href="index.html" class="logo logo-light">
+                    <a href="" class="logo logo-light">
                             <span class="logo-sm">
                                 <img src="/assets/images/logo-light.svg" alt="" height="22">
                             </span>
                         <span class="logo-lg">
-                                <img src="/assets/images/logo-light.png" alt="" height="19">
+                                <img style="margin-top: inherit" src="/assets/images/logo-light.png" alt="" height="19">
                             </span>
                     </a>
                 </div>
 
-                <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect"
-                        id="vertical-menu-btn">
-                    <i class="fa fa-fw fa-bars"></i>
-                </button>
+                <!--                <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect"-->
+                <!--                        id="vertical-menu-btn">-->
+                <!--                    <i class="fa fa-fw fa-bars"></i>-->
+                <!--                </button>-->
 
                 <!-- App Search-->
-                <form class="app-search d-none d-lg-block">
-                    <div class="position-relative">
-                        <input type="text" class="form-control" placeholder="Search...">
-                        <span class="bx bx-search-alt"></span>
+                <form class="app-search d-none d-lg-block ml-5 mt-4">
+                    <div class="row">
+                        <div class="position-relative">
+                            <input id="searchUser" type="text" class="form-control" placeholder="Search...">
+                            <span class="bx bx-search-alt"></span>
+                        </div>
+                        <input type="button" id="btnSearchUser" class="ml-3 btn btn-success" value="search" style="border-radius: 20px">
                     </div>
                 </form>
 
@@ -93,7 +96,7 @@
                         <a class="dropdown-item" href="#"><i
                                 class="bx bx-lock-open font-size-16 align-middle mr-1"></i> Lock screen</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-danger" href="#"><i
+                        <a class="dropdown-item text-danger" href="/login"><i
                                 class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
                     </div>
                 </div>
@@ -113,31 +116,21 @@
                     <li class="menu-title">Menu</li>
 
                     <li>
-                        <a href="javascript: void(0);" class="waves-effect">
-                            <i class="bx bx-home-circle"></i><span
-                                class="badge badge-pill badge-info float-right">03</span>
-                            <span>Dashboards</span>
+                        <a href="/products" class="waves-effect">
+                            <i class="bx bx-list-ul"></i><span
+                                class="badge badge-pill badge-info float-right"></span>
+                            <span>List products</span>
                         </a>
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="index.html">Default</a></li>
-                            <li><a href="dashboard-saas.html">Saas</a></li>
-                            <li><a href="dashboard-crypto.html">Crypto</a></li>
-                        </ul>
                     </li>
 
                     <li>
-                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <a class="has-arrow waves-effect">
                             <i class="bx bx-layout"></i>
-                            <span>Layouts</span>
+                            <span>Role</span>
                         </a>
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="layouts-horizontal.html">Horizontal</a></li>
-                            <li><a href="layouts-light-sidebar.html">Light Sidebar</a></li>
-                            <li><a href="layouts-compact-sidebar.html">Compact Sidebar</a></li>
-                            <li><a href="layouts-icon-sidebar.html">Icon Sidebar</a></li>
-                            <li><a href="layouts-boxed.html">Boxed Width</a></li>
-                            <li><a href="layouts-preloader.html">Preloader</a></li>
-                            <li><a href="layouts-colored-sidebar.html">Colored Sidebar</a></li>
+                        <ul class="dropdown" aria-expanded="false" >
+                            <li><a data-id="1" type="button" class="roleItem btn btn-success dropdown-item">Admin</a></li>
+                            <li><a data-id="2" type="button" class="roleItem btn btn-success dropdown-item">User</a></li>
                         </ul>
                     </li>
 
@@ -334,7 +327,6 @@
 <!-- JAVASCRIPT -->
 <th:block th:replace="/layout/script:: script"></th:block>
 
-<th:block th:replace="/user/modalCreate :: modalCreate"></th:block>
 
 <th:block th:replace="/user/modalUpdate :: modalUpdate"></th:block>
 <script>
@@ -437,7 +429,6 @@
 
 
     function doUpdate() {
-
         role.id = $("#roleUp").val();
         role.code = $("#roleUp option:selected").text();
 
@@ -578,34 +569,60 @@
             })
     }
 
-    function doSearchProduct() {
-        $('#btnSearchProduct').on('click', function () {
-            let query = $('#searchProduct').val();
-            $('#tbProduct tbody').html("")
+    function doSearchUser() {
+        $('#btnSearchUser').on('click', function () {
+            let query = $('#searchUser').val();
+            $('#tbUser tbody').html("")
             if (query === "") {
-                loadCustomers();
+                loadUsers();
                 return
             }
-
             $.ajax({
                 headers: {
                     "Accept": "application/json",
                     "Content-Type": "application/json"
                 },
                 "type": "GET",
-                "url": "http://localhost:8080/api/products/search/" + query
+                "url": "http://localhost:8080/api/users/search/" + query
             })
                 .done((data) => {
-                    $('#tbProduct tbody').html("")
+                    $('#tbUser tbody').html("")
                     $.each(data, (i, item) => {
-                        product = item;
-                        let str = renderProduct(product)
-                        $('#tbProduct tbody').prepend(str);
+                        user = item;
+                        let str = renderUser(user)
+                        $('#tbUser tbody').prepend(str);
                     })
                 })
         })
     }
-    doSearchProduct();
+    function showUserByRole(){
+        $(".roleItem").on("click", function () {
+            let id = $(this).data("id");
+            $.ajax({
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                "type": "GET",
+                "url": "http://localhost:8080/api/roles/" + id
+            })
+                .done((data) => {
+                    let tbUser = $("#tbUser tbody");
+                    tbUser.empty();
+                    console.log(data);
+                    data.forEach(item => {
+                        user = item;
+                        let str = renderUser(user);
+                        tbUser.prepend(str);
+                    });
+                    handleBtn();
+                    showRole();
+                })
+        });
+    }
+    $('.dropdown-toggle').dropdown()
+    showUserByRole()
+    doSearchUser();
     loadUsers();
 </script>
 

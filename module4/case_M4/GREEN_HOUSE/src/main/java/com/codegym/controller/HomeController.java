@@ -35,4 +35,12 @@ public class HomeController {
         modelAndView.setViewName("/product/list");
         return modelAndView;
     }
+
+    @GetMapping("/home")
+    public ModelAndView showHomePage(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/home");
+        return modelAndView;
+    }
+
 }

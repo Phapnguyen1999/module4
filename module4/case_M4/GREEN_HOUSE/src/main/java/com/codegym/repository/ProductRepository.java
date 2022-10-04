@@ -45,4 +45,14 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
             "FROM Product  p WHERE  " +
             " p.name like %?1% ")
     List<ProductDTO> findProductByValue(String query);
+    @Query ("SELECT NEW com.codegym.model.Product (" +
+            "p.id, " +
+            "p.name, " +
+            "p.image, " +
+            "p.quantity,  " +
+            "p.price, " +
+            "p.category) " +
+            "FROM Product AS p WHERE p.deleted = false AND p.category.id = :id")
+    List<Product> findProductByCategoryIdAndDeletedIsFalse(@Param("id") Long id);
+
 }

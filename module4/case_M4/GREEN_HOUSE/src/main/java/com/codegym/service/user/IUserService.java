@@ -14,6 +14,9 @@ public interface IUserService extends IGeneralService<User>, UserDetailsService 
     Optional<UserDTO> findUserDTOByUsername(String username);
 
     Optional <UserDTO> findUserById(Long id);
+    List<UserDTO> findAllUserDTOByDeletedIsFailse();
+    List<UserDTO> findUserDTOByRoleIdAndDeletedIsFalse(Long id);
+    List<UserDTO> findUserByValue(String query);
 
     List<UserDTO> findAllByIdNot(Long id);
 
@@ -23,7 +26,7 @@ public interface IUserService extends IGeneralService<User>, UserDetailsService 
 
     Boolean existByEmailAndIdIsNot(String email, Long id);
 
-    List<UserDTO> findAllUserDTOByDeletedIsFailse();
+
 
     Optional<UserDTO> findByUserId(Long id);
 

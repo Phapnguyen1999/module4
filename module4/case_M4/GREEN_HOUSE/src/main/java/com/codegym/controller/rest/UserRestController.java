@@ -67,6 +67,41 @@ public class UserRestController {
         }
         return new ResponseEntity<>(user.get(), HttpStatus.OK);
     }
+    @PutMapping("/edit/{id}")
+    public ResponseEntity<?> doEdit(@PathVariable Long id, @Validated @RequestBody UserDTO userDTO,
+                                    BindingResult bindingResult) {
+        Optional<User> u = userService.findById(id);
+
+        if (!u.isPresent()) {
+            return new ResponseEntity<>("Không tồn tại người dùng", HttpStatus.NOT_FOUND);
+        }
+
+
+        if (bindingResult.hasErrors()) {
+            return appUtils.mapErrorToResponse(bindingResult);
+        }
+
+        try {
+            User user = userDTO.toUser();
+
+            user.setId(u.get().getId());
+            user.setDeleted(u.get().isDeleted());
+
+            userDTO = user.toUserDTO();
+
+            userService.save(user);
+
+            return new ResponseEntity<>(userDTO, HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<>("Server ko xử lý được", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    @GetMapping("/search/{query}")
+    public ResponseEntity<?> searchListUser(@PathVariable String query) {
+        List<UserDTO> userDTOS = userService.findUserByValue(query);
+        return new ResponseEntity<>(userDTOS, HttpStatus.OK);
+    }
 
 //    @PutMapping("/block/{id}")
 //    public ResponseEntity<?> doBlock(@PathVariable Long id, BindingResult bindingResult) {

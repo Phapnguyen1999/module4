@@ -53,6 +53,13 @@ public class UserDTO {
         this.username = username;
         this.role = role.toRoleDTO();
     }
+    public UserDTO(Long id, String fullName, String phone, String username, Role role) {
+        this.id = id;
+        this.fullName = fullName;
+        this.phone = phone;
+        this.username = username;
+        this.role = role.toRoleDTO();
+    }
 
     public User toUser() {
         return new User()

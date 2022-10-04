@@ -65,4 +65,9 @@ public class ProductServiceImpl implements IProductService{
         return productRepository.findProductByValue(query);
     }
 
+    @Override
+    public List<Product> findProductByCategoryId(Long id) {
+        return productRepository.findProductByCategoryIdAndDeletedIsFalse(id);
+    }
+
 }

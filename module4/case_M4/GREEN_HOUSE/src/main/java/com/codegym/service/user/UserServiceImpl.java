@@ -84,6 +84,16 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public List<UserDTO> findUserDTOByRoleIdAndDeletedIsFalse(Long id) {
+        return userRepository.findUserDTOByRoleIdAndDeletedIsFalse(id);
+    }
+
+    @Override
+    public List<UserDTO> findUserByValue(String query) {
+        return userRepository.findUserByValue(query);
+    }
+
+    @Override
     public Optional<UserDTO> findByUserId(Long id) {
         return userRepository.findUserById(id);
     }

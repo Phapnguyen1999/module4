@@ -14,4 +14,6 @@ public interface IProductService extends IGeneralService<Product> {
 
     void deleteProductById(Long id);
     List<ProductDTO> findProductByValue(String query);
+    List<Product> findProductByCategoryId(Long id);
+
 }
