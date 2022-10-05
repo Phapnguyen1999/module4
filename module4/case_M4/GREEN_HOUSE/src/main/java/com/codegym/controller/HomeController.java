@@ -15,6 +15,7 @@ public class HomeController {
         modelAndView.setViewName("/login");
         return modelAndView;
     }
+
     @GetMapping("/register")
     public ModelAndView showSignUpPage() {
         ModelAndView modelAndView = new ModelAndView();
@@ -30,14 +31,14 @@ public class HomeController {
     }
 
     @GetMapping("/products")
-    public ModelAndView showProductPage(){
+    public ModelAndView showProductPage() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/product/list");
         return modelAndView;
     }
 
     @GetMapping("/home")
-    public ModelAndView showHomePage(){
+    public ModelAndView showHomePage() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/home");
         return modelAndView;

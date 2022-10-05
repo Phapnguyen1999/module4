@@ -12,6 +12,7 @@ public interface IGeneralService<T> {
     void remove(Long id);
 
     T getById(Long id);
+
     void softDelete(T t);
 
 }

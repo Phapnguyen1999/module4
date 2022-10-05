@@ -9,5 +9,6 @@ import java.util.List;
 
 public interface IRoleService extends IGeneralService<Role> {
     Role findByName(String name);
+
     List<RoleDTO> getAllRole();
 }

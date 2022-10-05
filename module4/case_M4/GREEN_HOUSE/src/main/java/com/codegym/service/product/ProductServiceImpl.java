@@ -12,9 +12,10 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class ProductServiceImpl implements IProductService{
+public class ProductServiceImpl implements IProductService {
     @Autowired
     ProductRepository productRepository;
+
     @Override
     public Iterable<Product> findAll() {
         return productRepository.findAll();

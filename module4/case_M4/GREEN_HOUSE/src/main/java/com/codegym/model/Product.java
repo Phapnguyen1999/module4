@@ -9,6 +9,7 @@ import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -37,13 +38,13 @@ public class Product {
 
     private boolean deleted;
 
-    public Product(Long id, String name, String image, int quantity, BigDecimal price, Category category){
-        this.id=id;
-        this.name=name;
-        this.image=image;
-        this.quantity=quantity;
-        this.price=price;
-        this.category=category;
+    public Product(Long id, String name, String image, int quantity, BigDecimal price, Category category) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+        this.quantity = quantity;
+        this.price = price;
+        this.category = category;
     }
 
     public ProductDTO toProductDTO() {

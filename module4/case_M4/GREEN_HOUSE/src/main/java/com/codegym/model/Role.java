@@ -25,12 +25,13 @@ public class Role {
     private Long id;
 
     private String code;
+
     private String name;
 
     @OneToMany(targetEntity = User.class, mappedBy = "role", fetch = FetchType.EAGER)
     private Set<com.codegym.model.User> users;
 
-    public RoleDTO toRoleDTO(){
+    public RoleDTO toRoleDTO() {
         return new RoleDTO()
                 .setId(id)
                 .setCode(code);

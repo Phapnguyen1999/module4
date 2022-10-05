@@ -16,7 +16,6 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @Accessors(chain = true)
 public class RoleDTO {
-
     @NotNull(message = "The role is required")
     private Long id;
 

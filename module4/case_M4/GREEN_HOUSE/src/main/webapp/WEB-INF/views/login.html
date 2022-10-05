@@ -14,28 +14,33 @@
                     <div class="card-body">
                         <div class="text-center mb-4 mt-3">
                             <a href="">
-                                <span>  <span style="font-weight: bold; font-size: 30px; color: green">GREEN HOUSE</span></span>
+                                <span>  <span
+                                        style="font-weight: bold; font-size: 30px; color: green">GREEN HOUSE</span></span>
                             </a>
 
                         </div>
                         <form action="mt-3" class="p-2">
                             <div class="form-group">
                                 <label for="usernameLogin">User Name</label>
-                                <input class="form-control" type="text" id="usernameLogin" required="" placeholder="User name">
+                                <input class="form-control" type="text" id="usernameLogin" required=""
+                                       placeholder="User name">
                             </div>
                             <div class="form-group">
                                 <label for="passwordLogin">Password</label>
-                                <input class="form-control" type="password" required="" id="passwordLogin" placeholder="Enter your password">
+                                <input class="form-control" type="password" required="" id="passwordLogin"
+                                       placeholder="Enter your password">
                             </div>
                             <div class="form-group mb-4 pb-3">
                                 <div class="custom-control custom-checkbox checkbox-primary">
                                     <input type="checkbox" class="custom-control-input" id="checkbox-signin">
                                     <label class="custom-control-label" for="checkbox-signin">Remember me</label>
-                                    <a href="page-recoverpw.html" class="text-muted float-right">Forgot your password?</a>
+                                    <a href="page-recoverpw.html" class="text-muted float-right">Forgot your
+                                        password?</a>
                                 </div>
                             </div>
                             <div class="mb-3 text-center">
-                                <button class="btn btn-success btn-block" type="button" id="btn_signIn"> Sign In </button>
+                                <button class="btn btn-success btn-block" type="button" id="btn_signIn"> Sign In
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -44,7 +49,8 @@
                 <!-- end card -->
                 <div class="row mt-4">
                     <div class="col-sm-12 text-center">
-                        <p class="text-muted mb-0">Don't have an account? <a href="/register" class="text-dark ml-1"><b>Sign Up</b></a></p>
+                        <p class="text-muted mb-0">Don't have an account? <a href="/register" class="text-dark ml-1"><b>Sign
+                            Up</b></a></p>
                     </div>
                 </div>
             </div>
@@ -83,7 +89,7 @@
                 console.log(resp.id)
                 findUserById(resp.id).then((result) => {
                     console.log(result.role.code)
-                    if(result.role.code === "USER"){
+                    if (result.role.code === "USER") {
                         setTimeout(function () {
                             window.location.href = "/home";
                         }, 1000);
@@ -95,12 +101,13 @@
                 });
             })
             .fail((jqXHR) => {
-                if (jqXHR.statusText === "error"){
+                if (jqXHR.statusText === "error") {
                     App.IziToast.showErrorAlert("Email or Password is not match");
                 }
                 App.IziToast.showErrorAlert(jqXHR.responseJSON.message);
             })
     });
+
     function findUserById(id) {
         return $.ajax({
             headers: {
@@ -108,7 +115,7 @@
                 "content-type": "application/json"
             },
             type: "GET",
-            url: "http://localhost:8080/api/users/"+ id
+            url: "http://localhost:8080/api/users/" + id
         })
             .done((data) => {
                 user = data;

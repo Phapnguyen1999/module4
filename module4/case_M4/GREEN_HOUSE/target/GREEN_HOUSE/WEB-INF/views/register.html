@@ -82,6 +82,7 @@
         rules: {
             username: {
                 required: true,
+                unique:true,
             },
             fullName: {
                 required: true,
@@ -96,6 +97,7 @@
         messages: {
             username: {
                 required: "Vui lòng nhập tên người dùng",
+                unique: "Email đã tồn tại",
             },
             fullName: {
                 required: "Vui lòng nhập tên đầy đủ"

@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+
 @Service
 
 
-public class CategoryServiceImpl implements ICategoryService{
+public class CategoryServiceImpl implements ICategoryService {
     @Autowired
     CategoryRepository categoryRepository;
+
     @Override
     public Iterable<Category> findAll() {
         return categoryRepository.findAll();
@@ -29,7 +31,6 @@ public class CategoryServiceImpl implements ICategoryService{
 
     @Override
     public void remove(Long id) {
-
     }
 
     @Override

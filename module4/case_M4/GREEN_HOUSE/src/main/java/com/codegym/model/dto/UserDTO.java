@@ -4,6 +4,7 @@ import com.codegym.model.Role;
 import com.codegym.model.User;
 import lombok.*;
 import lombok.experimental.Accessors;
+
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -21,11 +22,11 @@ public class UserDTO {
     private Long id;
 
     @NotBlank(message = "Tên không được trống")
-    @Size(min=3, max = 50, message = "Độ dài từ 3 - 50 kí tự")
+    @Size(min = 3, max = 50, message = "Độ dài từ 3 - 50 kí tự")
     private String fullName;
 
     @NotBlank(message = "SĐT không được trống")
-    @Pattern(regexp = "^[0][1-9][0-9]{8,9}$",message = "Số điện thoại gồm 10 số bắt đầu bằng số 0")
+    @Pattern(regexp = "^[0][1-9][0-9]{8,9}$", message = "Số điện thoại gồm 10 số bắt đầu bằng số 0")
     private String phone;
 
 
@@ -53,6 +54,7 @@ public class UserDTO {
         this.username = username;
         this.role = role.toRoleDTO();
     }
+
     public UserDTO(Long id, String fullName, String phone, String username, Role role) {
         this.id = id;
         this.fullName = fullName;

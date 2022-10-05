@@ -24,7 +24,6 @@ import java.math.BigInteger;
 @AllArgsConstructor
 @Accessors(chain = true)
 public class ProductDTO {
-
     private Long id;
 
     @Size(min = 5, max = 50, message = "Tên sản phẩm có độ dài 5-10 kí tự!")

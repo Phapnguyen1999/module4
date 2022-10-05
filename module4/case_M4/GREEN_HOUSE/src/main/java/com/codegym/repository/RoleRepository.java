@@ -11,7 +11,8 @@ import java.util.List;
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
     Role findByName(String name);
-    @Query("SELECT NEW com.codegym.model.dto.RoleDTO("+
+
+    @Query("SELECT NEW com.codegym.model.dto.RoleDTO(" +
             "r.id," +
             "r.code)" +
             "FROM Role AS r")

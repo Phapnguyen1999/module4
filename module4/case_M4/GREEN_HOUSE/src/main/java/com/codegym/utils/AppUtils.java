@@ -21,10 +21,11 @@ public class AppUtils {
         }
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
+
     public static ResponseEntity<?> errors(BindingResult bindingResult) {
         List<FieldError> errorList = bindingResult.getFieldErrors();
 
-        Map<String,String > errorMap = new HashMap<>();
+        Map<String, String> errorMap = new HashMap<>();
 
         for (FieldError fieldError : errorList) {
             errorMap.put(fieldError.getField(), fieldError.getDefaultMessage());

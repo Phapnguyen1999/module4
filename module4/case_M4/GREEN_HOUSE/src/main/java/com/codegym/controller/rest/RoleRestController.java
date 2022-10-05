@@ -21,16 +21,18 @@ public class RoleRestController {
     private IRoleService roleService;
     @Autowired
     private IUserService userService;
+
     @GetMapping
-    public ResponseEntity<?> getListRole(){
-        List<RoleDTO> roles =roleService.getAllRole();
-        if (roles==null){
+    public ResponseEntity<?> getListRole() {
+        List<RoleDTO> roles = roleService.getAllRole();
+        if (roles == null) {
             return new ResponseEntity<>("Danh sach trong!", HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(roles,HttpStatus.OK);
+        return new ResponseEntity<>(roles, HttpStatus.OK);
     }
+
     @GetMapping("/{id}")
-    public ResponseEntity<?> findUserByRoleId(@PathVariable Long id){
+    public ResponseEntity<?> findUserByRoleId(@PathVariable Long id) {
         List<UserDTO> userDTOS = userService.findUserDTOByRoleIdAndDeletedIsFalse(id);
         if (userDTOS == null) {
             return new ResponseEntity<>("Danh sách trống!", HttpStatus.NO_CONTENT);

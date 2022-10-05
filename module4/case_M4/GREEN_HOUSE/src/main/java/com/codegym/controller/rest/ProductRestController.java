@@ -32,12 +32,12 @@ public class ProductRestController {
     AppUtils appUtils;
 
     @GetMapping
-    public ResponseEntity<?> showListProduct(){
-        List<ProductDTO> productDTOS =productService.findAllProductDTO();
-        if(productDTOS.isEmpty()){
+    public ResponseEntity<?> showListProduct() {
+        List<ProductDTO> productDTOS = productService.findAllProductDTO();
+        if (productDTOS.isEmpty()) {
             return new ResponseEntity<>("Danh sach trong", HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(productDTOS,HttpStatus.OK);
+        return new ResponseEntity<>(productDTOS, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

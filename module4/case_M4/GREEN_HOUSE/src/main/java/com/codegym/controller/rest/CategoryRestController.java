@@ -33,14 +33,15 @@ public class CategoryRestController {
         }
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
+
     @GetMapping("/{id}")
-    public ResponseEntity<?> findProductByCategoryId(@PathVariable Long id){
+    public ResponseEntity<?> findProductByCategoryId(@PathVariable Long id) {
         List<Product> products = productService.findProductByCategoryId(id);
         if (products == null) {
             return new ResponseEntity<>("Danh sách trống!", HttpStatus.NO_CONTENT);
         }
         List<ProductDTO> productDTOS = new ArrayList<>();
-        for (Product product : products ) {
+        for (Product product : products) {
             productDTOS.add(product.toProductDTO());
         }
         return new ResponseEntity<>(productDTOS, HttpStatus.OK);

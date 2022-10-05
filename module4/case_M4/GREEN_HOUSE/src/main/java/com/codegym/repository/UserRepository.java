@@ -26,6 +26,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT NEW com.codegym.model.dto.UserDTO (u.id,u.fullName,u.password, u.phone, u.username,u.role)  FROM User u  WHERE u.deleted = false ")
     List<UserDTO> findAllUserDTOByDeletedIsFalse();
+
     @Query("SELECT NEW com.codegym.model.dto.UserDTO (" +
             "u.id," +
             "u.fullName," +
@@ -34,6 +35,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
             "u.username," +
             "u.role)  FROM User u  WHERE u.deleted = false AND u.role.id = :id ")
     List<UserDTO> findUserDTOByRoleIdAndDeletedIsFalse(@Param("id") Long id);
+
     @Query("SELECT NEW com.codegym.model.dto.UserDTO ( " +
             "u.id, " +
             "u.fullName, " +
@@ -41,8 +43,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
             "u.username, " +
             "u.role) " +
             "FROM User  u WHERE  " +
-            " u.fullName like %?1% OR u.username like %?1% "  )
+            " u.fullName like %?1% OR u.username like %?1% ")
     List<UserDTO> findUserByValue(String query);
+
     @Modifying
     @Query("UPDATE User AS u SET u.deleted = true WHERE u.id = :id")
     void blockUserById(@Param("id") Long id);

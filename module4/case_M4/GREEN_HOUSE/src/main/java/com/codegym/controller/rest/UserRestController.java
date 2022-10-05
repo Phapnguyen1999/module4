@@ -12,6 +12,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +36,7 @@ public class UserRestController {
 
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
+
     @PostMapping("/create")
     public ResponseEntity<?> doCreate(@RequestBody UserDTO userDTO) {
 
@@ -62,6 +64,7 @@ public class UserRestController {
         }
         return new ResponseEntity<>(user.get(), HttpStatus.OK);
     }
+
     @PutMapping("/edit/{id}")
     public ResponseEntity<?> doEdit(@PathVariable Long id, @Validated @RequestBody UserDTO userDTO,
                                     BindingResult bindingResult) {
@@ -92,6 +95,7 @@ public class UserRestController {
             return new ResponseEntity<>("Server ko xử lý được", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @GetMapping("/search/{query}")
     public ResponseEntity<?> searchListUser(@PathVariable String query) {
         List<UserDTO> userDTOS = userService.findUserByValue(query);

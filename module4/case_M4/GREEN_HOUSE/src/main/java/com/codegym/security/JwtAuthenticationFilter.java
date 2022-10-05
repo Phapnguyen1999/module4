@@ -48,7 +48,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 }
             }
         }
-
         return null;
     }
 
@@ -57,16 +56,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
         try {
             String bearerToken = getBearerTokenRequest(request);
-
             String authorizationCookie = getCookieValue(request);
-
             setAuthentication(request, bearerToken);
             setAuthentication(request, authorizationCookie);
 
         } catch (Exception e) {
             logger.error("Can NOT set user authentication -> Message: {0}", e);
         }
-
         filterChain.doFilter(request, response);
     }
 

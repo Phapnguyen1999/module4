@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product,Long> {
-    @Query ("SELECT NEW com.codegym.model.dto.ProductDTO (" +
+public interface ProductRepository extends JpaRepository<Product, Long> {
+    @Query("SELECT NEW com.codegym.model.dto.ProductDTO (" +
             "p.id, " +
             "p.name, " +
             "p.image, " +
@@ -22,6 +22,7 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
             "p.category) " +
             "FROM Product AS p WHERE p.deleted = false")
     List<ProductDTO> findAllProductDTO();
+
     @Query("SELECT NEW com.codegym.model.dto.ProductDTO (" +
             "p.id, " +
             "p.name, " +
@@ -35,6 +36,7 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     @Modifying
     @Query("UPDATE Product AS p SET p.deleted = true WHERE p.id = :id")
     void deleteProductById(@Param("id") Long id);
+
     @Query("SELECT NEW com.codegym.model.dto.ProductDTO ( " +
             "p.id, " +
             "p.name, " +
@@ -45,7 +47,8 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
             "FROM Product  p WHERE  " +
             " p.name like %?1% ")
     List<ProductDTO> findProductByValue(String query);
-    @Query ("SELECT NEW com.codegym.model.Product (" +
+
+    @Query("SELECT NEW com.codegym.model.Product (" +
             "p.id, " +
             "p.name, " +
             "p.image, " +
