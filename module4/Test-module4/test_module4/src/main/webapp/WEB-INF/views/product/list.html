@@ -1,0 +1,343 @@
+﻿<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>GREEN HOUSE</title>
+    <th:block th:replace="/layout/head :: head"></th:block>
+</head>
+
+<body>
+<!-- Begin page -->
+<div id="layout-wrapper">
+
+    <header id="page-topbar">
+        <div class="navbar-header">
+            <div class="d-flex">
+                <!-- LOGO -->
+                <div class="navbar-brand-box">
+                    <a href="index.html" class="logo logo-dark">
+                            <span class="logo-sm">
+                                <img src="/assets/images/logo.svg" alt="" height="22">
+                            </span>
+                        <span class="logo-lg mt-4">
+                                <img src="/assets/images/greenhouse.png" alt="" height="120">
+                            </span>
+                    </a>
+
+                    <a href="" class="logo logo-light">
+                            <span class="logo-sm">
+                                <img src="/assets/images/logo-light.svg" alt="" height="22">
+                            </span>
+                        <span class="logo-lg">
+                                <img style="margin-top: inherit" src="/assets/images/logo-light.png" alt="" height="19">
+                            </span>
+                    </a>
+                </div>
+
+<!--                <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect"-->
+<!--                        id="vertical-menu-btn">-->
+<!--                    <i class="fa fa-fw fa-bars"></i>-->
+<!--                </button>-->
+
+                <!-- App Search-->
+                <form class="app-search d-none d-lg-block ml-5 mt-4">
+                    <div class="row">
+                    <div class="position-relative">
+                        <input id="searchProduct" type="text" class="form-control" placeholder="Search...">
+                        <span class="bx bx-search-alt"></span>
+                    </div>
+                    <input type="button" id="btnSearchProduct" class="ml-3 btn btn-success" value="Search" style="border-radius: 20px">
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="d-flex">
+
+                <div class="dropdown d-inline-block d-lg-none ml-2">
+                    <button type="button" class="btn header-item noti-icon waves-effect"
+                            id="page-header-search-dropdown" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                        <i class="mdi mdi-magnify"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0"
+                         aria-labelledby="page-header-search-dropdown">
+
+                        <form class="p-3">
+                            <div class="form-group m-0">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search ..."
+                                           aria-label="Recipient's username">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit"><i
+                                                class="mdi mdi-magnify"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="dropdown d-inline-block">
+                    <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="rounded-circle header-profile-user" src="/assets/images/users/avatar-1.jpg"
+                             alt="Header Avatar">
+                        <span class="d-none d-xl-inline-block ml-1">Henry</span>
+                        <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <!-- item-->
+                        <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle mr-1"></i>
+                            Profile</a>
+                        <a class="dropdown-item" href="#"><i
+                                class="bx bx-wallet font-size-16 align-middle mr-1"></i> My Wallet</a>
+                        <a class="dropdown-item d-block" href="#"><span
+                                class="badge badge-success float-right">11</span><i
+                                class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings</a>
+                        <a class="dropdown-item" href="#"><i
+                                class="bx bx-lock-open font-size-16 align-middle mr-1"></i> Lock screen</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-danger" href="/login"><i
+                                class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </header> <!-- ========== Left Sidebar Start ========== -->
+    <div class="vertical-menu">
+
+        <div data-simplebar="" class="h-100">
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu">
+                <!-- Left Menu Start -->
+                <ul class="metismenu list-unstyled" id="side-menu">
+                    <li class="menu-title">Menu</li>
+
+                    <li>
+                        <a href="/users" class="waves-effect">
+                            <i class="bx bx-list-ul"></i><span
+                                class="badge badge-pill badge-info float-right"></span>
+                            <span>List Users</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="has-arrow waves-effect">
+                            <i class="bx bx-layout"></i>
+                            <span>Category</span>
+                        </a>
+                        <ul class="dropdown" aria-expanded="false" >
+                            <li><a data-id="1" type="button" class="categoriesItem btn btn-success dropdown-item">Trầu bà</a></li>
+                            <li><a data-id="2" type="button" class="categoriesItem btn btn-success dropdown-item">Sen đá</a></li>
+                            <li><a data-id="4" type="button" class="categoriesItem btn btn-success dropdown-item"> Bonsai </a></li>
+                            <li><a data-id="3" type="button" class="categoriesItem btn btn-success dropdown-item">Xương rồng</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-title">Apps</li>
+
+                    <li>
+                        <a href="calendar.html" class=" waves-effect">
+                            <i class="bx bx-calendar"></i>
+                            <span>Calendar</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="chat.html" class=" waves-effect">
+                            <i class="bx bx-chat"></i>
+                            <span class="badge badge-pill badge-success float-right">New</span>
+                            <span>Chat</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-store"></i>
+                            <span>Ecommerce</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="ecommerce-products.html">Products</a></li>
+                            <li><a href="ecommerce-product-detail.html">Product Detail</a></li>
+                            <li><a href="ecommerce-orders.html">Orders</a></li>
+                            <li><a href="ecommerce-customers.html">Customers</a></li>
+                            <li><a href="ecommerce-cart.html">Cart</a></li>
+                            <li><a href="ecommerce-checkout.html">Checkout</a></li>
+                            <li><a href="ecommerce-shops.html">Shops</a></li>
+                            <li><a href="ecommerce-add-product.html">Add Product</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-bitcoin"></i>
+                            <span>Crypto</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="crypto-wallet.html">Wallet</a></li>
+                            <li><a href="crypto-buy-sell.html">Buy/Sell</a></li>
+                            <li><a href="crypto-exchange.html">Exchange</a></li>
+                            <li><a href="crypto-lending.html">Lending</a></li>
+                            <li><a href="crypto-orders.html">Orders</a></li>
+                            <li><a href="crypto-kyc-application.html">KYC Application</a></li>
+                            <li><a href="crypto-ico-landing.html">ICO Landing</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-envelope"></i>
+                            <span>Email</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="email-inbox.html">Inbox</a></li>
+                            <li><a href="email-read.html">Read Email</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-receipt"></i>
+                            <span>Invoices</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="invoices-list.html">Invoice List</a></li>
+                            <li><a href="invoices-detail.html">Invoice Detail</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-briefcase-alt-2"></i>
+                            <span>Projects</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="projects-grid.html">Projects Grid</a></li>
+                            <li><a href="projects-list.html">Projects List</a></li>
+                            <li><a href="projects-overview.html">Project Overview</a></li>
+                            <li><a href="projects-create.html">Create New</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-task"></i>
+                            <span>Tasks</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="tasks-list.html">Task List</a></li>
+                            <li><a href="tasks-kanban.html">Kanban Board</a></li>
+                            <li><a href="tasks-create.html">Create Task</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bxs-user-detail"></i>
+                            <span>Contacts</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="contacts-grid.html">User Grid</a></li>
+                            <li><a href="contacts-list.html">User List</a></li>
+                            <li><a href="contacts-profile.html">Profile</a></li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </div>
+            <!-- Sidebar -->
+        </div>
+    </div>
+    <!-- Left Sidebar End -->
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+
+        <div class="page-content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-9">
+                                    <div>
+                                        <h4 class="card-title mb-4">List Products</h4>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div>
+                                        <button class="btn btn-outline-primary create">
+                                            <i class="fa fa-plus"></i> Add new Product
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="tbProduct" class="table table-centered table-nowrap mb-0">
+                                    <thead class="thead-light">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Product Name</th>
+                                        <th>Image</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Category</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- end table-responsive -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <script>document.write(new Date().getFullYear())</script>
+                    © Skote.
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-sm-right d-none d-sm-block">
+                        Design & Develop by Themesbrand
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<!-- end main content-->
+
+</div>
+<!-- END layout-wrapper -->
+
+<!-- JAVASCRIPT -->
+<th:block th:replace="/layout/script:: script"></th:block>
+
+<th:block th:replace="/product/modalCreate :: modalCreate"></th:block>
+
+<th:block th:replace="/product/modalUpdate :: modalUpdate"></th:block>
+<script>
+
+
+</script>
+
+</body>
+
+</html>
